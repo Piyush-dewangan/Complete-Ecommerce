@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <title>Authentication</title>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="./styles.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <style>
+    *{
+    margin: 0;
+    padding: 0;
+    /* box-sizing: border-box; */
+}
+#wrapper{
+    height: 100vh;
+    width: 100vw;
+    overflow-x: hidden;
+    overflow-y: auto;
+    /* border: 2px solid pink; */
+}
+#container{
+    position: relative;
+
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    width: 100vw;
+    justify-content: center;
+    align-items: center;
+    align-content: start;
+    border: 2px solid pink;
+}
+#formdiv{
+    border: .5px solid grey;
+    border-radius: 10px;
+    padding: 2rem;
+}
+#heading{
+    /* position: absolute; */
+    /* top: 3rem; */
+    height: 6rem;
+    width: 21rem;
+
+    /* border: 1px solid orange; */
+}
+.logo{
+    height: 6rem;
+    width: 21rem;
+    object-fit: cover;
+    /* border: 1px solid blue; */
+}
+#ba{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#sbt{
+    width: 20rem;
+}
+#cna{
+    display: flex;
+    justify-content: center;
+    padding-top: 1rem;
+}
+  </style>
+  <script type = "text/javascript" >  
+    function preventBack() { window.history.forward(); }  
+    setTimeout("preventBack()", 0);  
+    window.onunload = function () { null };  
+</script> 
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <style>
+
+    </style>
+</head>
+
+<body>
+
+  <div id="wrapper">
+    <%if(err.length!=0){%>
+        <%-include('../common/error');%>
+        <%}%>
+    <div id="container">
+      <div id="heading">
+       
+        <img src="/logo.png" class="logo">
+
+      </div>
+      <div id="formdiv">
+        <form method="post" action="/forgot">
+          <h3>Forgot Password</h3>
+          <div class="form-group">
+            <label for="exampleInputEmail1">Enter Email</label>
+            <input name="email" type="email" class="form-control" id="exampleInputPassword1" placeholder="Email" required>
+            <small id="emailHelp" class="form-text text-muted">Enter valid email</small>
+          </div>
+          <div class="form-group">
+            <label for="exampleInputPassword1">Phone number</label>
+
+            <input name="pno" type="text" class="form-control" id="exampleInputPassword1" placeholder="Phone number" required>
+            
+          </div>
+
+          <div id="ba">
+            <button id="sbt" type="submit" class="btn btn-warning ">Verify</button>
+          </div>
+        <div id="cna">
+          <a href="/">back</a>
+        </div>
+        </form>
+        
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Optional JavaScript -->
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+    crossorigin="anonymous"></script>
+</body>
+
+</html>

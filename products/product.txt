@@ -1,0 +1,16 @@
+[
+        {"id": 1, "name": "iPhone", "image": "https://m.media-amazon.com/images/I/71GLMJ7TQiL._SX679_.jpg", "price": 999.99, "details": "The latest iPhone model with a high-quality camera and powerful processing."},
+        {"id": 2, "name": "SamsungGalaxy", "image": "https://m.media-amazon.com/images/I/814ePfNubRL._SX679_.jpg", "price": 899.99, "details": "A top-of-the-line Android phone with a sleek design and impressive features."},
+        {"id": 3, "name": "MacBook", "image": "https://cdn1.smartprix.com/rx-iXMsgRkkm-w420-h420/apple-macbook-air-20.webp", "price": 1299.99, "details": "A lightweight and powerful laptop with a long battery life and Retina display."},
+        {"id": 4, "name": "Dell", "image": "https://m.media-amazon.com/images/I/61BeBTB41DL._AC_UL640_QL65_.jpg", "price": 799.99, "details": "A reliable and affordable laptop with a full-sized keyboard and HD display."},
+        {"id": 5, "name": "HP", "image": "https://m.media-amazon.com/images/I/51weyUgs8vL._SX300_SY300_QL70_FMwebp_.jpg", "price": 899.99, "details": "A stylish and powerful laptop with a touch screen and Bang & Olufsen audio."},
+        {"id": 6, "name": "AppleWatch", "image": "https://m.media-amazon.com/images/I/71ZyBh4LQuL._AC_UY436_FMwebp_QL65_.jpg", "price": 399.99, "details": "A sleek and functional smartwatch that tracks your fitness, sends texts, and makes calls."},
+        {"id": 7, "name": "SamsungGalaxyWatch", "image": "https://m.media-amazon.com/images/I/61O5Xjb9uEL._AC_UY436_FMwebp_QL65_.jpg", "price": 349.99, "details": "A feature-packed smartwatch with a long battery life and built-in GPS."},
+        {"id": 8, "name": "Womensclothing", "image": "https://m.media-amazon.com/images/I/71enTsiaAaL._AC_UL800_FMwebp_QL65_.jpg", "price": 49.99, "details": "A stylish and comfortable collection of women's clothing for any occasion."},
+        {"id": 9, "name": "Mensclothing", "image": "https://m.media-amazon.com/images/I/81Bq7yzdQsL._AC_UL800_FMwebp_QL65_.jpg", "price": 39.99, "details": "A versatile and affordable collection of men's clothing for work or play."},
+        {"id": 10, "name": "Shoes", "image": "https://m.media-amazon.com/images/I/71PZK6gQJcL._AC_UL800_FMwebp_QL65_.jpg", "price": 79.99, "details": "A fashionable and comfortable selection of shoes for both men and women."},
+        {"id": 11, "name": "Skincare", "image": "https://m.media-amazon.com/images/I/61lmO0H85iL._AC_UL800_FMwebp_QL65_.jpg", "price": 29.99, "details": "A nourishing and hydrating skincare line for all skin types."},
+        {"id": 12, "name": "Makeup", "image": "https://m.media-amazon.com/images/I/61VAaPjLrEL._AC_UL800_FMwebp_QL65_.jpg", "price": 19.99, "details": "A high-quality and affordable makeup collection for all skin tones."},
+        {"id": 13, "name": "Haircare", "image": "https://m.media-amazon.com/images/I/81aPwVRDJRL._AC_UL800_FMwebp_QL65_.jpg", "price": 24.99, "details": "A nourishing and restorative haircare line for all hair types."}
+    
+]

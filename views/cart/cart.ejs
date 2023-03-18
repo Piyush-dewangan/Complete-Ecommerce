@@ -1,0 +1,222 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <title>My Cart</title>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <style>
+    .feedback {
+      background-color: #5a6268;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 4px;
+      border-color: #e0a800;
+    }
+
+    #mybutton {
+      position: fixed;
+      bottom: -4px;
+      right: 10px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrapper">
+    <nav class="navbar navbar-dark sticky-top bg-dark">
+      <span class="navbar-brand mb-0 h1">My Cart</span>
+
+      <span><a class="text-secondary mr-4" href="/">Back</a><a class="text-secondary mr-4" href="/reset">Reset
+          Password</a>
+        <a class="text-secondary mr-4" href="/logout">Logout</a>
+        <a href="/mycart"><img style="height:2rem; width: 2rem;" src="cartlogo.png" alt=""></a>
+      </span>
+
+    </nav>
+    <div id="container" class="d-flex justify-content-start flex-wrap p-3">
+      <%for(let i=0;i<pd.length;i++){ %>
+        <div id="<%=pd[i].id%>" class="shadow card m-2" style="width: 18rem;">
+
+          <span class="ml-2"><input type="checkbox" onchange="checkout(this,<%=pd[i].id%>)" name="checkbox"
+              id="c<%=pd[i].id%>" <%=pd[i].checkbox ? "checked" : "" %> ></span>
+
+          <img style="object-fit: cover;
+          " height="250vh" class="card-img-top border-bottom p-4" src="<%=pd[i].image%>" alt="Card image cap" onclick="imgclick(c<%=pd[i].id%>,<%=pd[i].id%>)">
+          <div class="card-body">
+            <h5 class="d-flex justify-content-center card-title">
+              <%= pd[i].name%>
+            </h5>
+            <p class="d-flex justify-content-center card-text text-success">
+              $<%= pd[i].price%>
+            </p>
+            <div>
+              <div class="d-flex justify-content-around mb-3">
+                <a href="#" onclick="addItem(q<%=pd[i].id%>)">
+                  <img height="40rem" width="40rem" src="add.png" alt="" >
+                </a>
+                <div>
+                  <h5 id="q<%=pd[i].id%>">
+                    <%=pd[i].quantity%>
+                  </h5>
+                </div>
+                <a href="#" onclick="removeItem(q<%=pd[i].id%>)">
+                  <img height="40rem" width="40rem" src="remove.png" alt="">
+                </a>
+              </div>
+            </div>
+            <div class="d-flex justify-content-between">
+
+
+            </div>
+            <div class="d-flex justify-content-between"> <a type="button"
+                class="btn btn-warning d-flex justify-content-center mb-2" data-toggle="modal"
+                data-target="#<%=pd[i].name%>">
+                Details
+              </a>
+              <a type="button" href="#" class="btn btn-secondary d-flex justify-content-center mb-2"
+                onclick="deleteElement(<%=pd[i].id%>)">
+                Delete
+              </a>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Button trigger modal -->
+
+
+        <!-- Modal -->
+        <div class="modal fade" id="<%=pd[i].name%>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+          aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Product:</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <img height="250vh" style="object-fit: cover;" class="card-img-top object-fit-cover border rounded"
+                  src="<%=pd[i].image%>" alt="Card image cap">
+              </div>
+
+              <h5 class="m-2">
+                <%=pd[i].details%>
+              </h5>
+
+              <div class="modal-footer">
+
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-warning">Buy now</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <%}%>
+    </div>
+  </div>
+  <div id="mybutton">
+    <a href="/checkout">
+      <button href="/checkout" class="feedback">Checkout</button>
+    </a>
+    
+  </div>
+  <script>
+    //checkout function 
+    if (document.getElementById('container').innerText.length < 1) {
+      document.getElementById('container').innerHTML = "<h1>Your cart is empty 😶</h1>";
+    }
+    function imgclick(id,pid){
+      console.log("image is",id);
+      console.log("product id",pid);
+      id.checked= !(id.checked);
+      checkout(id,pid);
+    }
+    function checkout(checkbox, pid) {
+      console.log("this is checkbox", checkbox);
+      console.log(pid);
+      console.log(checkbox.checked);
+      let cbv = checkbox.checked;
+      console.log("type of pid", typeof pid);
+      const xhttp = new XMLHttpRequest();
+      xhttp.open("GET", `/checkbox/${pid}/${cbv}`, true);
+      xhttp.onload = function () {
+        console.log("onload runss");
+      }
+      xhttp.send();
+    }
+    function removeItem(id) {
+      console.log("value of innerhtml is ", id.innerHTML);
+      console.log(typeof id.innerHTML);
+      if (parseInt(id.innerHTML) > 1) {
+        let temp = id.id.slice(1);
+        let requiredId = parseInt(temp);
+        console.log("all good");
+        const xhttp = new XMLHttpRequest();
+        xhttp.open("GET", `/removecart/${requiredId}`, true);
+        xhttp.send();
+        xhttp.onload = function () {
+          console.log("this is response text");
+          console.log(xhttp.responseText);
+          id.innerHTML = --id.innerHTML;
+        }
+      }
+
+
+    }
+    function addItem(id) {
+
+      let temp = id.id.slice(1);
+      let requiredId = parseInt(temp);
+      console.log("all good");
+      const xhttp = new XMLHttpRequest();
+      xhttp.open("GET", `/addcart/${requiredId}`, true);
+      xhttp.send();
+      xhttp.onload = function () {
+        console.log("this is response text");
+        console.log(xhttp.responseText);
+        id.innerHTML = ++id.innerHTML;
+      }
+
+    }
+    function deleteElement(id) {
+
+      console.log("this is ", id);
+      console.log(typeof id);
+      const xhttp = new XMLHttpRequest();
+      xhttp.open("GET", `/cartdelete/${id}`, true);
+      xhttp.send();
+      xhttp.onload = function () {
+        console.log(xhttp.responseText);
+        console.log("onload i s working");
+        document.getElementById(id).remove();
+        if (document.getElementById('container').innerText.length < 1) {
+          document.getElementById('container').innerHTML = "<h1>Your cart is empty 😶</h1>";
+        }
+      }
+
+    }
+
+  </script>
+  <!-- Optional JavaScript -->
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+    crossorigin="anonymous"></script>
+</body>
+
+</html>
